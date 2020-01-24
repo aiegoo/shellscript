@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 
 # This script generates a list of random passwords
 
@@ -25,4 +25,9 @@ echo "${PASSWORD}"
 
 
 # An even better password
-PASSWORD=$(data +%s%N${RANDOM}${RANDOM} | sha256sum | head -c48)
+PASSWORD=$(date +%s%N${RANDOM}${RANDOM} | sha256sum | head -c48)
+echo "${PASSWORD}"
+
+# Append a special character to the password
+SPECIAL_CHARACTER=$(echo '!@#$%^&*()' | fold -w1 | shuf | head -c1)
+echo "${PASSWORD}${SPECIAL_CHARACTER}"
